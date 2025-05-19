@@ -37,7 +37,15 @@ def get_dept():
     Raises:
         ValueError if name of worker not present in the department global variable list
     """
-    pass
+    try:
+        dept = str(input("Worker name: "))
+        if dept.lower() not in  departments:
+            raise ValueError (f"{dept} not in departments. Try again!!!")
+        return dept
+    except ValueError as e:
+        print(e)
+        return get_dept
+
 
 def get_month():
     """
@@ -49,7 +57,15 @@ def get_month():
     Raises:
         ValueError if month not present in the months global variable list
     """
-    pass
+    try:
+        month = str(input("Enter the month, e.g 'jan': "))
+        if month.lower() not in months:
+            raise ValueError (f"{month} not in months. Enter the month, e.g 'jan'")
+        return month
+    except ValueError as e:
+        print(e)
+        return get_month
+    
 
 
 def get_week():
@@ -63,7 +79,14 @@ def get_week():
         ValueError if value is negative or > 5
         TypeError if non integer value is entered
     """
-    pass
+    try:
+        week = int(input("Enter the week. e.g 1-5"))
+        if week <= 0:
+            raise ValueError ("Value must be an Interger. ")
+        return week
+    except ValueError as e:
+        print(e)
+        return get_week
 
 def get_total_time_worked():
     """
@@ -96,7 +119,7 @@ def get_idle_mins():
     Raises:
         TypeError if non integer value is input
     """
-    pass
+    
 
 def get_expected_hr_worked():
     """
