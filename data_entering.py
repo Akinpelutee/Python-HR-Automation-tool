@@ -119,7 +119,16 @@ def get_idle_mins():
     Raises:
         TypeError if non integer value is input
     """
-    
+    try:
+        idle_min = int(input("Enter the idle mins: "))
+        if idle_min < 0:
+            raise ValueError ("Value cannot be a str or negative.")
+        idle_min_percentage = idle_min / 100
+        return idle_min_percentage
+    except ValueError as e :
+        print (e)
+        return get_idle_mins
+
 
 def get_expected_hr_worked():
     """
@@ -132,7 +141,18 @@ def get_expected_hr_worked():
         TypeError if non integer value is input
         ValueError if a negative is input
     """
-    pass
+    try:
+        expected_hr = int(input("Enter the number of expected hour worked: "))
+        if expected_hr < 0:
+            raise ValueError("Value cannot be a string or negative. Try again!!!")
+        return expected_hr
+    except ValueError as e:
+        print(e)
+        return get_expected_hr_worked
+    except Exception as e:
+        print("An unexpected error occured:", str(e))
+        return get_expected_hr_worked
+
 
 def get_kpi_assigned():
     """
@@ -145,7 +165,14 @@ def get_kpi_assigned():
         TypeError if non integer value is input
         ValuError when a negative value is input
     """
-    pass
+    try:
+        kpi_assigned = int(input("Enter the number of kpi assigned for the week: "))
+        if kpi_assigned < 0:
+            raise ValueError ("Value cannot be negative. Try again!!!")
+        return kpi_assigned
+    except ValueError as e:
+        print(e)
+        return get_kpi_assigned
 
 def get_kpi_completed():
     """
@@ -157,7 +184,14 @@ def get_kpi_completed():
     Raises:
         ValuError when a negative value is input
     """
-    pass
+    try:
+        kpi_completed = int(input("Enter the number of kpi_completed for the week."))
+        if kpi_completed < 0:
+            raise ValueError ("Value cannot be negative. Try again!!!")
+        return kpi_completed
+    except ValueError as e:
+        print(e)
+        return get_kpi_completed
 
 def get_gather_time():
     """
@@ -169,4 +203,14 @@ def get_gather_time():
     Raises:
         ValuError when a negative value is input
     """
-    pass
+    try:
+        gather_time = int(input("Enter the no of hour available on gather in e.g (35,40) format: "))
+        val_1, val_2 = map(int, gather_time.split(","))
+        if val_1 < 0 or val_2 < 0:
+            raise ValueError ("Value cannot be negative!!!")
+        avg_gather_time = sum(val_1 + val_2) / get_expected_hr_worked
+        gather_time_percentage = avg_gather_time / 100
+        return gather_time_percentage
+    except ValueError as e:
+        print(e)
+        return get_gather_time
