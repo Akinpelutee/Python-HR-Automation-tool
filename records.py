@@ -6,7 +6,7 @@ class CSV:
     """
     Allows the manipulation of the csv file
     """
-    def __init__(self, csv_file='Efficiency_metrics'):
+    def __init__(self, csv_file='efficiency_metrics.csv'):
         """Initilizes the CSV file handler attributes"""
         self.csv_file = csv_file
         self.COLUMNS = [

@@ -3,7 +3,7 @@ import pandas as pd
 
 departments = ["Operations", "Engineering", "Marketing", "Product", "Partnership"]
 names = [
-    "sam", "kylie", "tops", "mary", "jessica", "folan", "suzzy", "darren", "smith", "eden", "josh", "jeane", "adam", "taylor", "coren"
+    "Temitope", "Adaeze", "Suzan", "Justina", "Gfave", "Jessey", "Jemima", "Victor", "Comfort", "Ebube", "Dotun", "Somto", "Rasheed", "Blaize",
     ]
 months = ["Jan", "Feb", "March", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
 
