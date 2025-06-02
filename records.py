@@ -17,7 +17,7 @@ class CSV:
     def initialize_csv(self):
         """Initializes the csv file if it doesn't exist"""
         try:
-            pd.read_csv(csv.csv_file)
+            pd.read_csv(self.csv_file)
         except FileNotFoundError:
             df = pd.DataFrame(columns=self.COLUMNS)
 
@@ -45,7 +45,7 @@ class CSV:
         with open(self.csv_file, 'a', newline='') as f:
             writer = csv.DictWriter(f, fieldnames=self.COLUMNS)
             writer.writerow(new_entry)
-            print("Entry successfully added...")
+            print("Entry successfully added........")
 
 
 def add_data():
