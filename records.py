@@ -30,8 +30,8 @@ class CSV:
             ):
         """Adds new entry to the file"""
         new_entry ={
-            'dept':dept,
             'name':name,
+            'dept':dept,
             'month':month,
             'week':week,
             'total_time_wrked':total_time_wrked,
@@ -45,7 +45,7 @@ class CSV:
         with open(self.csv_file, 'a', newline='') as f:
             writer = csv.DictWriter(f, fieldnames=self.COLUMNS)
             writer.writerow(new_entry)
-            print("Entry successfully added........")
+        print("Entry successfully added........")
 
 
 def add_data():

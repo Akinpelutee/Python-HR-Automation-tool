@@ -38,7 +38,7 @@ def get_dept():
         ValueError if name of worker not present in the department global variable list
     """
     try:
-        dept = str(input("Worker name: "))
+        dept = str(input("Worker department: "))
         if dept.lower() not in  departments:
             raise ValueError (f"{dept} not in departments. Try again!!!")
         return dept
