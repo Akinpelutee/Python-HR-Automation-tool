@@ -63,6 +63,5 @@ def add_data():
     gather_time = get_gather_time()
 
     csv_handler.add_data(dept,name,month,week,total_time_wrked,idle_mins,expected_hr_wrked,kpi_ass,kpi_comp,gather_time)
-
+  
 add_data()
-)
