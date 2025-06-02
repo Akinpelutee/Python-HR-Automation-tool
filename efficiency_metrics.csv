@@ -1,0 +1,2 @@
+dept,name,month,week,total_time_wrked,idle_mins,expected_hr_wrked,kpi_ass,kpi_comp,gather_time
+<function get_dept at 0x7ff2f4ab1af0>,<function get_name at 0x7ff2f4ab1a60>,<function get_month at 0x7ff2f4ab1b80>,2,23.033333333333335,0.01,40,2,3,<function get_gather_time at 0x7ff2f4ab1f70>

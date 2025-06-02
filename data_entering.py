@@ -19,7 +19,7 @@ def get_name():
         ValueError if name of worker not present in the names global variable list
     """
     try:
-        name = str(input("Worker name: "))
+        name = str(input("Worker name: ")).strip()
         if name.lower() not in names:
             raise ValueError ("Name must be someone working in the company:")
         return name
