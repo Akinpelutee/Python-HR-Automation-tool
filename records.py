@@ -51,8 +51,8 @@ class CSV:
 def add_data():
     csv_handler = CSV()
     csv_handler.initialize_csv()
-    dept = get_dept()
     name = get_name()
+    dept = get_dept()
     month = get_month()
     week = get_week()
     total_time_wrked = get_total_time_worked()

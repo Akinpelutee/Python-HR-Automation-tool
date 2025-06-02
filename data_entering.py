@@ -80,7 +80,7 @@ def get_week():
         TypeError if non integer value is entered
     """
     try:
-        week = int(input("Enter the week. e.g 1-5"))
+        week = int(input("Enter the week. e.g 1-5: "))
         if week <= 0:
             raise ValueError ("Value must be an Interger. ")
         return week
@@ -205,7 +205,7 @@ def get_gather_time():
     """
     try:
         gather_time = int(input("Enter the no of hour available on gather in e.g (35,40) format: "))
-        val_1, val_2 = map(int, gather_time.split(","))
+        val_1, val_2 = map(int, gather_time.split(','))
         if val_1 < 0 or val_2 < 0:
             raise ValueError ("Value cannot be negative!!!")
         avg_gather_time = sum(val_1 + val_2) / get_expected_hr_worked
