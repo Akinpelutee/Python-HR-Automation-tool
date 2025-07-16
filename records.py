@@ -26,7 +26,7 @@ class CSV:
             print(f"File {self.csv_file} initialized sucessfully")
 
     def add_data(
-            self,dept,name,month,week,total_time_wrked,idle_mins,expected_hr_wrked,kpi_ass,kpi_comp,gather_time
+            self,name,dept,month,week,total_time_wrked,idle_mins,expected_hr_wrked,kpi_ass,kpi_comp,gather_time
             ):
         """Adds new entry to the file"""
         new_entry ={
@@ -52,15 +52,45 @@ def add_data():
     csv_handler = CSV()
     csv_handler.initialize_csv()
     name = get_name()
+    if name is None:
+        print('Operation cancelled.')
+        return
     dept = get_dept()
+    if dept is None:
+        print('Operation cancelled.')
+        return
     month = get_month()
+    if month is None:
+        print('Operation cancelled.')
+        return
     week = get_week()
+    if week is None:
+        print('Operation cancelled.')
+        return
     total_time_wrked = get_total_time_worked()
+    if total_time_wrked is None:
+        print('Operation cancelled.')
+        return
     idle_mins = get_idle_mins()
+    if idle_mins is None:
+        print('Operation cancelled.')
+        return
     expected_hr_wrked = get_expected_hr_worked()
+    if expected_hr_wrked is None:
+        print('Operation cancelled.')
+        return
     kpi_ass = get_kpi_assigned()
+    if kpi_ass is None:
+        print('Operation cancelled.')
+        return
     kpi_comp = get_kpi_completed()
+    if kpi_comp is None:
+        print('Operation cancelled.')
+        return
     gather_time = get_gather_time()
+    if gather_time is None:
+        print('Operation cancelled.')
+        return
 
     csv_handler.add_data(dept,name,month,week,total_time_wrked,idle_mins,expected_hr_wrked,kpi_ass,kpi_comp,gather_time)
   
