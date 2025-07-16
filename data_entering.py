@@ -18,14 +18,17 @@ def get_name():
     Raises:
         ValueError if name of worker not present in the names global variable list
     """
-    try:
-        name = str(input("Worker name: ")).strip()
-        if name.lower() not in names:
-            raise ValueError ("Name must be someone working in the company:")
-        return name
-    except ValueError as e:
-        print(e)
-        return get_name
+    while True:
+        try:
+            name = str(input("Worker name (or 'q' to quit) ")).strip()
+            if name == 'q':
+                return None
+            if name.lower() in [n.lower() for n in names]:
+                return name.capitalize()
+            else:
+                raise ValueError ("Name not found. Enter a valid name or 'q' to quit: ")
+        except ValueError as e:
+            print(e)
     
 def get_dept():
     """
@@ -37,14 +40,18 @@ def get_dept():
     Raises:
         ValueError if name of worker not present in the department global variable list
     """
-    try:
-        dept = str(input("Worker department: "))
-        if dept.lower() not in  departments:
-            raise ValueError (f"{dept} not in departments. Try again!!!")
-        return dept
-    except ValueError as e:
-        print(e)
-        return get_dept
+    while True:
+        try:
+            dept = str(input("Worker department (or 'q' to quit): "))
+            if dept == 'q':
+                return None
+            if dept.lower() in [d.lower() for d in departments]:
+                return dept.capitalize()
+            else:
+                raise ValueError (f"Dept not in departments. Enter a valid department or 'q' to quit: ")
+        except ValueError as e:
+            print(e)
+            
 
 
 def get_month():
@@ -57,14 +64,17 @@ def get_month():
     Raises:
         ValueError if month not present in the months global variable list
     """
-    try:
-        month = str(input("Enter the month, e.g 'jan': "))
-        if month.lower() not in months:
-            raise ValueError (f"{month} not in months. Enter the month, e.g 'jan'")
-        return month
-    except ValueError as e:
-        print(e)
-        return get_month
+    while True:
+        try:
+            month = str(input("Enter the month, e.g 'jan' or 'q' to quit: "))
+            if month == 'q':
+                return None
+            if month.lower() in [m.lower() for m in months]:
+                return month.capitalize()
+            else:
+                raise ValueError (f"{month} not in months. Enter the month, e.g 'jan'")
+        except ValueError as e:
+            print(e)
     
 
 
@@ -79,14 +89,17 @@ def get_week():
         ValueError if value is negative or > 5
         TypeError if non integer value is entered
     """
-    try:
-        week = int(input("Enter the week. e.g 1-5: "))
-        if week <= 0:
-            raise ValueError ("Value must be an Interger. ")
-        return week
-    except ValueError as e:
-        print(e)
-        return get_week
+    while True:
+        try:
+            week = str(input("Enter the week. e.g 1-5 or 'q' to quit: "))
+            if week == 'q':
+                return None
+            if week.isdigit() and int(week) > 0:
+                return week
+            else:
+                raise ValueError ("Value must be an Interger!!!. 'q' to quit ")
+        except ValueError as e:
+            print(e)
 
 def get_total_time_worked():
     """
@@ -98,16 +111,18 @@ def get_total_time_worked():
     Raises:
         TypeError if a non integer value is input
     """
-    try:
-        time_worked = input("Enter the time worked in 'HH:MM': ")
-        hours, minutes = map(int, time_worked.split(':'))
-        if hours < 0 or minutes < 0 or minutes >= 60:
-            raise ValueError ("Value cannot be a string or less than 0. It should be in (HH:MM) format!!!")
-        decimal_time = hours + minutes / 60
-        return decimal_time
-    except ValueError as e:
-        print(e)
-        return get_total_time_worked
+    while True:
+        try:
+            time_worked = str(input("Enter the time worked in 'HH:MM' or 'q' to quit: "))
+            if time_worked == 'q':
+                return None
+            hours, minutes = map(int, time_worked.split(':'))
+            if hours < 0 or minutes < 0 or minutes >= 60:
+                raise ValueError ("Value cannot be a string or less than 0. It should be in (HH:MM) format!!!")
+            decimal_time = hours + minutes / 60
+            return round(decimal_time,2)
+        except ValueError as e:
+            print(e)
 
 def get_idle_mins():
     """
@@ -119,15 +134,18 @@ def get_idle_mins():
     Raises:
         TypeError if non integer value is input
     """
-    try:
-        idle_min = int(input("Enter the idle mins: "))
-        if idle_min < 0:
-            raise ValueError ("Value cannot be a str or negative.")
-        idle_min_percentage = idle_min / 100
-        return idle_min_percentage
-    except ValueError as e :
-        print (e)
-        return get_idle_mins
+    while True:
+        try:
+            idle_min = input("Enter the idle mins (or 'q' to quit): ")
+            if idle_min == 'q':
+                return None
+            if idle_min.isdigit() and int(idle_min) >= 0:
+                idle_min_percentage = int(idle_min) / 100
+                return idle_min_percentage
+            else:
+                raise ValueError ("Value cannot be a str or negative.")
+        except ValueError as e :
+            print (e)
 
 
 def get_expected_hr_worked():
@@ -141,17 +159,18 @@ def get_expected_hr_worked():
         TypeError if non integer value is input
         ValueError if a negative is input
     """
-    try:
-        expected_hr = int(input("Enter the number of expected hour worked: "))
-        if expected_hr < 0:
-            raise ValueError("Value cannot be a string or negative. Try again!!!")
-        return expected_hr
-    except ValueError as e:
-        print(e)
-        return get_expected_hr_worked
-    except Exception as e:
-        print("An unexpected error occured:", str(e))
-        return get_expected_hr_worked
+    while True:
+        try:
+            expected_hr = int(input("Enter the number of expected hour worked ('q' to quit): "))
+            if expected_hr == 'q':
+                return None
+            if expected_hr < 0:
+                raise ValueError("Value cannot be a string or negative. Try again!!!")
+            return expected_hr
+        except ValueError as e:
+            print(e)
+        except Exception as e:
+            print("An unexpected error occured:", str(e))
 
 
 def get_kpi_assigned():
@@ -165,14 +184,16 @@ def get_kpi_assigned():
         TypeError if non integer value is input
         ValuError when a negative value is input
     """
-    try:
-        kpi_assigned = int(input("Enter the number of kpi assigned for the week: "))
-        if kpi_assigned < 0:
-            raise ValueError ("Value cannot be negative. Try again!!!")
-        return kpi_assigned
-    except ValueError as e:
-        print(e)
-        return get_kpi_assigned
+    while True:
+        try:
+            kpi_assigned = int(input("Enter the number of kpi assigned for the week ('q' to quit): "))
+            if kpi_assigned == 'q':
+                return None
+            if kpi_assigned < 0:
+                raise ValueError ("Value cannot be negative. Try again!!!")
+            return kpi_assigned
+        except ValueError as e:
+            print(e)
 
 def get_kpi_completed():
     """
@@ -184,14 +205,18 @@ def get_kpi_completed():
     Raises:
         ValuError when a negative value is input
     """
-    try:
-        kpi_completed = int(input("Enter the number of kpi_completed for the week."))
-        if kpi_completed < 0:
-            raise ValueError ("Value cannot be negative. Try again!!!")
-        return kpi_completed
-    except ValueError as e:
-        print(e)
-        return get_kpi_completed
+    while True:
+        try:
+            kpi_completed = int(input("Enter the number of kpi_completed for the week: "))
+            if kpi_completed == 'q':
+                return None
+            if kpi_completed < 0:
+                raise ValueError ("Value cannot be negative. Try again!!!")
+            return kpi_completed
+        except ValueError as e:
+            print(e)
+
+
 
 def get_gather_time():
     """
@@ -203,14 +228,17 @@ def get_gather_time():
     Raises:
         ValuError when a negative value is input
     """
-    try:
-        gather_time = int(input("Enter the no of hour available on gather in e.g (35,40) format: "))
-        val_1, val_2 = map(int, gather_time.split(','))
-        if val_1 < 0 or val_2 < 0:
-            raise ValueError ("Value cannot be negative!!!")
-        avg_gather_time = sum(val_1 + val_2) / get_expected_hr_worked
-        gather_time_percentage = avg_gather_time / 100
-        return gather_time_percentage
-    except ValueError as e:
-        print(e)
-        return get_gather_time
+    while True:
+        try:
+            gather_time = input("Enter the no of hour available on gather in e.g (35,40) format. ('q' to quit): ")
+            if gather_time.lower() == 'q':
+                return None
+            val_1, val_2 = map(int, gather_time.split(','))
+            if val_1 < 0 or val_2 < 0:
+                raise ValueError ("Value cannot be negative!!!")
+            avg_gather_time = (val_1 + val_2) / 2
+            expected_hr_worked = get_expected_hr_worked()
+            gather_time_percentage = (avg_gather_time / expected_hr_worked) * 100
+            return round(gather_time_percentage,2)
+        except ValueError as e:
+            print(e)
